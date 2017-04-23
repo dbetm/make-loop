@@ -5,10 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
-// use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
-
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
@@ -23,14 +22,14 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers;
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/success';
 
     /**
      * Create a new authentication controller instance.
@@ -39,7 +38,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
     /**
@@ -64,7 +63,8 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data) {
+    protected function create(array $data)
+    {
         return User::create([
             'name' => $data['name'],
             'last_name' => $data['last_name'],
@@ -73,5 +73,20 @@ class AuthController extends Controller
             'points' => 100,
             'is_active' => true,
         ]);
+    }
+
+    /*
+     * 
+     */
+    public function register(Request $request) {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException($request, $validator);
+        }
+
+        $user = $this->create($request->all());
+
+        return redirect($this->redirectPath());
     }
 }
