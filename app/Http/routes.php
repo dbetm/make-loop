@@ -20,3 +20,13 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/success', 'HomeController@success');
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::delete('/categories/{id}', 'CategoryController@delete');
+    Route::get('/categories/create', 'CategoryController@create');
+    Route::post('/categories/create', 'CategoryController@postCreate');
+    Route::get('/categories/{id}', 'CategoryController@update');
+    Route::patch('/categories/{id}', 'CategoryController@patchUpdate');
+    Route::get('/categories', 'CategoryController@index');
+    Route::patch('/categories/{id}', 'CategoryController@patchUpdate');
+});

@@ -29,7 +29,8 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/success';
+    protected $redirectTo = '/home';
+    protected $redirectAfterRegister = 'success/';
 
     /**
      * Create a new authentication controller instance.
@@ -76,7 +77,7 @@ class AuthController extends Controller
     }
 
     /*
-     * 
+     *
      */
     public function register(Request $request) {
         $validator = $this->validator($request->all());
@@ -87,6 +88,6 @@ class AuthController extends Controller
 
         $user = $this->create($request->all());
 
-        return redirect($this->redirectPath());
+        return redirect($this->redirectAfterRegister);
     }
 }
