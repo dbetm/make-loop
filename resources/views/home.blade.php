@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Inicio</div>
                 <div class="panel-body">
-                    ¡Has iniciado sesión!
+                    ¡Has iniciado sesión {{ Auth::user()->name }}!
                 </div>
             </div>
         </div>

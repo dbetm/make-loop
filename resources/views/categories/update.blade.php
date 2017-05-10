@@ -4,7 +4,11 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Editar categoría</div>
+                <div class="panel-heading head"><b>Editando categoría</b>
+                    <a href="{{ url('admin/categories/') }}" class="btn btn-primary pull-right">
+                        <i class="fa fa-th-list"></i> Ver categorías
+                    </a>
+                </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/categories', $category->id) }}">
                         {{ csrf_field() }}
