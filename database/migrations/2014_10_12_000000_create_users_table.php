@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('points')->unsigned();
             $table->boolean('is_active')->default(false);
             $table->boolean('was_deleted')->default(false);
-            $table->enum('role', ['super', 'admin', 'user'])->default('user');
+            $table->enum('role', ['admin', 'user'])->default('user');
             $table->string('image', 255)->nullable();
             $table->string('country', 65)->nullable();
             $table->string('state', 65)->nullable();
