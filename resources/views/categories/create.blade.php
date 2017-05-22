@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Creando categoría
+                <div class="panel-heading"><b>Creando categoría</b>
                     <a href="{{ url('admin/categories/') }}" class="btn btn-primary pull-right">
                         <i class="fa fa-th-list"></i> Ver categorías
                     </a
@@ -48,6 +48,9 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-plus"></i> Guardar
+                                </button>
+                                <button type="reset" class="btn btn-default">
+                                    <i class="fa fa-btn fa-eraser"></i> Limpiar
                                 </button>
                             </div>
                         </div>

@@ -8,8 +8,7 @@ class Article extends Model {
     protected $table = 'articles';
 
     protected $fillable = [
-        'name', 'description', 'city', 'points', 'shipping_way', 'price',
-        'status', 'image'
+        'name', 'description', 'points', 'price', 'status', 'image'
     ];
 
     public function category() {
@@ -18,5 +17,9 @@ class Article extends Model {
 
     public function user() {
         return $this->belongsTo('App\User');
+    }
+
+    public function interchange() {
+        return $this->belongsTo('App\Interchange');
     }
 }

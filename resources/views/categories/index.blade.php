@@ -17,6 +17,7 @@
                         <i class="fa fa-plus"></i> Crear
                     </a>
                 </div>
+
                 <div class="panel-body">
                     <table class="table">
                         <thead>
@@ -36,7 +37,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-md-3 col-offset-3">
-                                                <a href="{{ url('admin/categories', $category->id) }}" class="btn btn-success btn-xs">
+                                                <a href="{{ url('admin/categories', $category->id) }}" class="btn btn-success btn-xs" title="Editar">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                             </div>
@@ -44,7 +45,7 @@
                                                 <form action="{{ url('admin/categories', $category->id) }}" method="POST" class="form-inline" onsubmit="return confirmDelete();">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
-                                                    <button type="submit" class="btn btn-danger btn-xs">
+                                                    <button type="submit" class="btn btn-danger btn-xs" title="Borrar">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </form>

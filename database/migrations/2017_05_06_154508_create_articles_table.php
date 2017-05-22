@@ -3,8 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticlesTable extends Migration
-{
+class CreateArticlesTable extends Migration {
     /**
      * Run the migrations.
      *
@@ -26,9 +25,7 @@ class CreateArticlesTable extends Migration
             $table->string('description', 255);
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
-            $table->string('city', 255);
-            $table->bigInteger('points')->unsigned();
-            $table->string('shipping_way', 255);
+            $table->integer('points')->unsigned();
             $table->decimal('price', 6, 2)->nullable();
             $table->enum('status', ['new', 'good', 'regular'])->default('good');
             $table->boolean('is_active')->default(true);
