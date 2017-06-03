@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class Article extends Controller
-{
+class Article extends Controller {
     //
 }

@@ -27,5 +27,10 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/categories/{id}', 'CategoryController@update');
     Route::patch('/categories/{id}', 'CategoryController@patchUpdate');
     Route::get('/categories', 'CategoryController@index');
-    Route::patch('/categories/{id}', 'CategoryController@patchUpdate');
+    
+
+    Route::delete('/users/{id}', 'UserController@delete');
+    Route::patch('/users/{id}', 'UserController@turned');
+    Route::get('/users', 'UserController@index');
+    Route::put('/users/{id}', 'UserController@disban');
 });

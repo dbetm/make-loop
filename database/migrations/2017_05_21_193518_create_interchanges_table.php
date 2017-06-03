@@ -24,8 +24,8 @@ class CreateInterchangesTable extends Migration {
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::drop('interchanges');
+        Schema::drop('intercharge_user');
     }
 }

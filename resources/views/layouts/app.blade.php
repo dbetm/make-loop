@@ -1,3 +1,4 @@
+@extends('layouts.welcome')
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,11 +24,10 @@
         .fa-btn {
             margin-right: 6px;
         }
-        .head {
-            height: 55px;
-            vertical-align: baseline;
+        .panelUp {
+            padding-top: 7.5px;
         }
-    </style>
+     </style>
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top">
@@ -44,14 +44,17 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    Make Loop
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/home') }}"><b>Inicio</b></a></li>
+                    @if(!Auth::guest())
+                        <li><a href="#">Perfil</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -67,10 +70,11 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar sesión</a></li>
                                 @if(Auth::user()->role == 'admin')
                                     <li><a href="{{ url('admin/categories') }}"><i class="fa fa-btn fa-tags"></i>Administrar categorías</a></li>
+                                    <li><a href="{{ url('admin/users') }}"><i class="fa fa-btn fa-user"></i>Administrar usuarios</a></li>
                                 @endif
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar sesión</a></li>
                             </ul>
                         </li>
                     @endif

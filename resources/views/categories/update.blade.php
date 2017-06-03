@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading head"><b>Editando categoría</b>
+                <div class="panel-heading clearfix"> <h4 class="panel-title pull-left panelUp"><b>Modificando categoría</b></h4>
                     <a href="{{ url('admin/categories/') }}" class="btn btn-primary pull-right">
                         <i class="fa fa-th-list"></i> Ver categorías
                     </a>

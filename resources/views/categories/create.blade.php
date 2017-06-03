@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading"><b>Creando categoría</b>
+                <div class="panel-heading clearfix"> <h4 class="panel-title pull-left panelUp"><b>Creando categoría</b></h4>
                     <a href="{{ url('admin/categories/') }}" class="btn btn-primary pull-right">
                         <i class="fa fa-th-list"></i> Ver categorías
-                    </a
+                    </a>
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('admin/categories/create') }}">

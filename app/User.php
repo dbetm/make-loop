@@ -24,7 +24,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function article() {
+    public function articles() {
         return $this->hasMany('App\Article');
+    }
+
+    public function interchanges() {
+        return $this->belongsToMany('App\Interchange');
     }
 }
