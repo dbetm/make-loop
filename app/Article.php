@@ -8,7 +8,7 @@ class Article extends Model {
     protected $table = 'articles';
 
     protected $fillable = [
-        'name', 'description', 'points', 'price', 'status', 'image'
+        'name', 'description', 'points', 'price', 'status', 'is_active', 'image'
     ];
 
     public function category() {

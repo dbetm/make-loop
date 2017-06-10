@@ -54,6 +54,7 @@
                     <li><a href="{{ url('/home') }}"><b>Inicio</b></a></li>
                     @if(!Auth::guest())
                         <li><a href="#">Perfil</a></li>
+                        <li><a href="{{ url('/articles/index') }}">Mis artículos</a></li>
                     @endif
                 </ul>
 
