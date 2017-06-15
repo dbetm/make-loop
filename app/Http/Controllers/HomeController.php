@@ -26,10 +26,12 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) {
-        $context['articles'] = Article::search($request->arg)
+        $articles = Article::search($request->arg)
+            ->with('category')
             ->where('is_active', '1')
             ->orderBy('created_at', 'DESC')
             ->paginate(10);
+        $context['articles'] = $articles;
         return view('home', $context);
     }
 
