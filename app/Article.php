@@ -22,4 +22,8 @@ class Article extends Model {
     public function interchange() {
         return $this->belongsTo('App\Interchange');
     }
+
+    function scopeSearch($query, $arg) {
+        return $query->where('description','LIKE','%'.$arg.'%')->orWhere('name','LIKE','%'.$arg.'%');
+    }
 }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use App\Article;
+use App\Category;
 
 
 class HomeController extends Controller {
@@ -21,8 +25,12 @@ class HomeController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        return view('home');
+    public function index(Request $request) {
+        $context['articles'] = Article::search($request->arg)
+            ->where('is_active', '1')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(10);
+        return view('home', $context);
     }
 
     /**

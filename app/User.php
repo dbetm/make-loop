@@ -31,4 +31,8 @@ class User extends Authenticatable
     public function interchanges() {
         return $this->belongsToMany('App\Interchange');
     }
+    //Search for users, by their id or email
+    function scopeSearch($query, $arg) {
+        return $query->where('id',$arg)->orWhere('email','LIKE','%'.$arg.'%');
+    }
 }

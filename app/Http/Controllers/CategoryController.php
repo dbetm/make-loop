@@ -24,7 +24,7 @@ class CategoryController extends Controller {
     }
 
     public function index() {
-        $context['categories'] = Category::all();
+        $context['categories'] = Category::orderBy('name', 'asc')->get();
         return view('categories.index', $context);
     }
 

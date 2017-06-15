@@ -12,8 +12,25 @@
         </div>
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading clearfix"> <h4 class="panel-title pull-left panelUp"><b>Usuarios</b></h4></div>
-
+                <div class="panel-heading clearfix">
+                    <h4 class="panel-title pull-left panelUp"><b>Usuarios</b></h4>
+                    <div class="row">
+                        <div class="col-lg-4 pull-right">
+                            <form action="{{ url('admin/users') }}" method="GET" role="search">
+                                {{ csrf_field() }}
+                                {{ method_field('GET') }}
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" name="arg" placeholder="Escribe el ID o correo">
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-search "></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <div class="panel-body">
                     <table class="table">
                         <thead>

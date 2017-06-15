@@ -26,7 +26,7 @@
                         </div>
                         <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
                             <label for="status" class="col-md-4 control-label">Estado del artículo</label>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <select class="selectpicker form-control" name="status" id="status">
                                     <option value="good">Bueno</option>
                                     <option value="new">Nuevo</option>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-group {{ $errors->has('category_id') ? ' has-error' : '' }}">
                             <label for="category_id" class="col-md-4 control-label">Categoría</label>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <select class="form-control selectpicker" name="category_id" id="category_id">
                                     @foreach($categories as $category)
                                         @if($category->is_active == 0)
@@ -73,7 +73,7 @@
                         <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
                             <label for="price" class="col-md-4 control-label">Precio</label>
                             <div class="col-md-2">
-                                <input id="price" type="number" class="form-control" name="price" value="{{ old('price') }}" placeholder="$ Opcional">
+                                <input id="price" type="number" min="0" class="form-control" name="price" value="{{ old('price') }}" placeholder="$ Opcional">
                                 @if ($errors->has('price'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('price') }}</strong>
@@ -122,7 +122,7 @@
                                 </button>
                             </div>
                         </div>
-                  </form>
+                    </form>
                 </div>
             </div>
         </div>

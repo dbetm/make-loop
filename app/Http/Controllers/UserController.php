@@ -14,8 +14,8 @@ class UserController extends Controller {
       $this->middleware(['auth', 'admin']);
     }
 
-    public function index() {
-        $context['users'] = User::paginate(10);
+    public function index(Request $request) {
+        $context['users'] = User::search($request->arg)->paginate(10);
         return view('users.index', $context);
     }
 

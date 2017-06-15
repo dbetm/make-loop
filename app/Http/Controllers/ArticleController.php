@@ -18,8 +18,9 @@ class ArticleController extends Controller {
         $this->middleware('auth');
     }
 
-    public function index() {
-        $context['articles'] = Article::where('user_id', $user = Auth::user()->id)->get();
+    public function index(Request $request) {
+        $context['articles'] = Article::where('user_id', $user = Auth::user()->id)
+            ->search($request->arg)->paginate(10);
         return view('articles.index', $context);
     }
 
@@ -28,13 +29,12 @@ class ArticleController extends Controller {
             'name' => 'required|max:65',
             'description' => 'required|max:255',
             'price' => 'min:0.1|max:100000',
-            'points' => 'min:1|max:100',
-            'status' => 'required',
+            'points' => 'required',
         ]);
     }
 
     public function create() {
-        $categories['categories'] = Category::all();
+        $categories['categories'] = Category::orderBy('name', 'asc')->select('name', 'id', 'is_active')->get();
         return view('articles.create', $categories);
     }
 
