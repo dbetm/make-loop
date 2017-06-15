@@ -37,6 +37,7 @@
                             <div class="col-md-6">
                                 <h4 class="list-group-item-heading"> {{ $article->name }} </h4>
                                 <p class="list-group-item-text">
+                                    <p>{{ $article->category->name }}</p>
                                     @if($article->price)<p> <small> <b>Precio de referencia:</b> {{ $article->price }} </small> <p> @endif
                                     {{ $article->description }}
                                 </p>

@@ -39,7 +39,7 @@
                         @foreach($articles as $article)
                         <div class="col-xs-18 col-sm-6 col-md-3">
                              <div class="thumbnail">
-                                 <img src="{{ $article->image }}">
+                                <img src="{{ $article->image }}" class="img-responsive center-block">
                                 <div class="caption">
                                     <h4><b>{{ $article->name }}</b></h4>
                                     <p>{{ $article->description }}</p>
