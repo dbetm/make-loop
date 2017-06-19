@@ -29,7 +29,7 @@ class CreateArticlesTable extends Migration {
             $table->decimal('price', 6, 2)->nullable();
             $table->enum('status', ['new', 'good', 'regular'])->default('good');
             $table->boolean('is_active')->default(true);
-            $table->boolean('was_deleted')->default(false);
+            $table->boolean('trans')->default(false);
             $table->string('image', 255)->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

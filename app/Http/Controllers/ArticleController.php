@@ -56,6 +56,10 @@ class ArticleController extends Controller {
         $article['user_id'] = Auth::user()->id;
         $article['category_id'] = $category_id;
 
+        if($article['price'] == 0) {
+            $article['price'] = NULL;
+        }
+
         $article->save();
 
         return redirect($this->indexPath)->with('message', 'Artículo creado.');
@@ -108,6 +112,9 @@ class ArticleController extends Controller {
         $article->category_id = $data['category_id'];
         $article->points = $data['points'];
         $article->price = $data['price'];
+        if($article->price == 0) {
+            $article->price = NULL;
+        }
         $article->description = $data['description'];
         $article->image = $data['image'];
         $article->is_active = $data['is_active'];

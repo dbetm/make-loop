@@ -20,7 +20,7 @@ class Article extends Model {
     }
 
     public function interchange() {
-        return $this->belongsTo('App\Interchange');
+        return $this->hasOne('App\Interchange');
     }
 
     function scopeSearch($query, $arg) {

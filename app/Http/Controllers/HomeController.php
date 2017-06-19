@@ -6,8 +6,11 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 use App\Article;
 use App\Category;
+use App\Interchange;
 
 
 class HomeController extends Controller {
@@ -27,11 +30,15 @@ class HomeController extends Controller {
      */
     public function index(Request $request) {
         $articles = Article::search($request->arg)
-            ->with('category')
+            ->with('category','user', 'interchange')
             ->where('is_active', '1')
             ->orderBy('created_at', 'DESC')
             ->paginate(10);
+        $user = Auth::user();
+
         $context['articles'] = $articles;
+        $context['user'] = $user;
+
         return view('home', $context);
     }
 

@@ -28,8 +28,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Article');
     }
 
-    public function interchanges() {
-        return $this->belongsToMany('App\Interchange');
+    public function interchange() {
+        return $this->hasOne('App\Interchange');
     }
     //Search for users, by their id or email
     function scopeSearch($query, $arg) {

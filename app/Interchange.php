@@ -5,13 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Interchange extends Model {
-    protected $table  'interchanges';
+    protected $table = 'interchanges';
 
-    public function article() { //Revisar relación entre artículo e intercambio
-        return $this->hasOne('App\Article');
+    protected $fillable = ['status'];
+
+    public function article() {
+        return $this->belongsTo('App\Article');
     }
 
-    public function users() {
-       return $this->belongsToMany('App\User');
+    public function user() {
+       return $this->belongsTo('App\User');
     }
 }

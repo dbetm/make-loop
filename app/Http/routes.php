@@ -18,6 +18,9 @@ Route::get('/', function() {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::patch('/home/{article_id}', 'InterchangeController@store');
+
 Route::get('/success', 'HomeController@success');
 
 Route::group(['prefix' => 'admin'], function() {
@@ -42,3 +45,11 @@ Route::post('/articles/create', 'ArticleController@postCreate');
 Route::get('/articles/{id}', 'ArticleController@update');
 Route::patch('/articles/{id}', 'ArticleController@patchUpdate');
 Route::put('/articles/{id}', 'ArticleController@turned');
+
+Route::group(['prefix' => 'interchange'], function() {
+    Route::get('/', 'InterchangeController@index');
+    Route::get('/me', 'InterchangeController@show');
+    Route::delete('/{id}', 'InterchangeController@cancel');
+    Route::patch('/{id}', 'InterchangeController@send');
+    Route::put('/{id}', 'InterchangeController@deliver');
+});

@@ -59,6 +59,17 @@
                     @if(!Auth::guest())
                         <li><a href="#">Perfil</a></li>
                         <li><a href="{{ url('/articles/index') }}">Mis artículos</a></li>
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Intercambios <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ url('interchange/me') }}"><i class="fa fa-btn fa-rocket"></i>Que he solicitado</a></li>
+                                    <li><a href="{{ url('interchange/') }}"><i class="fa fa-btn fa-flash"></i>Que me han solicitado</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     @endif
                 </ul>
 
@@ -79,6 +90,7 @@
                                     <li><a href="{{ url('admin/categories') }}"><i class="fa fa-btn fa-tags"></i>Administrar categorías</a></li>
                                     <li><a href="{{ url('admin/users') }}"><i class="fa fa-btn fa-user"></i>Administrar usuarios</a></li>
                                 @endif
+                                <li><a href="#"><i class="fa fa-btn fa-gg"></i>Puntos {{ Auth::user()->points }}</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar sesión</a></li>
                             </ul>
                         </li>

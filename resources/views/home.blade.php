@@ -4,6 +4,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+            @if(session()->has('message'))
+                <div class="alert alert-success alert-dismissable">
+                    {{ session()->get('message') }}
+                </div>
+            @elseif(session()->has('notice'))
+                <div class="alert alert-danger alert-dismissable">
+                    {{ session()->get('notice') }}
+                </div>
+            @endif
+        </div>
+        <div class="col-md-10 col-md-offset-1">
             <div class="row clearfix">
                 <div class="col-lg-5 pull-right panelUp2">
                     <form action="#" method="GET" role="search">
@@ -24,11 +35,14 @@
                 <div class="list-group">
                 @forelse($articles as $article)
                     @empty
-                    <h2>No se encontró ningún resultado que contenga los términos de búsqueda que ingresaste.</h2>
+                    <h2>Ningún artículo encontrado.</h2>
                 @endforelse
                 @foreach($articles as $article)
+                    @if($article->user->is_active == '0' or $article->trans == 1)
+                        @continue
+                    @endif
                     <div class="row">
-                        <a href="#" class="list-group-item">
+                        <a class="list-group-item">
                             <div class="media col-md-3">
                                 <figure class="pull-left">
                                     <img class="media-object img-rounded img-responsive" src="{{ $article->image }}" alt="Foto del artículo">
@@ -37,15 +51,30 @@
                             <div class="col-md-6">
                                 <h4 class="list-group-item-heading"> {{ $article->name }} </h4>
                                 <p class="list-group-item-text">
-                                    <p>{{ $article->category->name }}</p>
+                                    <p>
+                                        <span class="label label-info">{{ $article->category->name }}</span>
+                                    </p>
+
                                     @if($article->price)<p> <small> <b>Precio de referencia:</b> {{ $article->price }} </small> <p> @endif
                                     {{ $article->description }}
+                                    <p></p>
+                                    @if($user->id != $article->user->id)
+                                        <p class="text-muted">{{ $article->user->name }} {{ $article->user->last_name }}</p>
+                                    @endif
                                 </p>
                             </div>
                             <div class="col-md-3 text-center">
                                 <h2> {{ $article->points }} <small> puntos </small></h2>
                                 {{-- <span class="label label-info">{{ $category->name }}</span> hacer inner join para traerme el nombre --}}
-                                <button type="button" class="btn btn-primary btn-lg btn-block"> ¡Lo quiero! </button>
+                                <form action="{{ url('/home', $article->id) }}" method="POST" class="form-inline">
+                                    {{ csrf_field() }}
+                                    {{ method_field('PATCH') }}
+                                    @if($user->id != $article->user->id and $article->was_deleted != 1)
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block"> <b>¡Lo quiero! </b> </button>
+                                    @else
+                                        <h2><span class="label label-info">Es tuyo</span></h2>
+                                    @endif
+                                </form>
                                 <div class="stars">
                                     @if($article->status == 'new')
                                         @for ($i = 0; $i < 5; $i++)

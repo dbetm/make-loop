@@ -12,9 +12,12 @@ class CreateInterchangesTable extends Migration {
     public function up() {
         Schema::create('interchanges', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('status', ['canceled', 'checked', 'solicited'])->default('solicited');
+            $table->enum('status', ['canceled', 'checked', 'solicited', 'sending'])->default('solicited');
+            $table->boolean('was_deleted')->default(false);
             $table->integer('article_id')->unsigned();
+            $table->integer('users_id')->unsigned();
             $table->foreign('article_id')->references('id')->on('articles');
+            $table->foreign('users_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -26,6 +29,5 @@ class CreateInterchangesTable extends Migration {
      */
     public function down() {
         Schema::drop('interchanges');
-        Schema::drop('intercharge_user');
     }
 }
