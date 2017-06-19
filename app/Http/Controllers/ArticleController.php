@@ -9,6 +9,7 @@ use Validator;
 use App\Http\Requests;
 use App\Article;
 use App\Category;
+use App\Interchange;
 
 class ArticleController extends Controller {
 
@@ -83,6 +84,7 @@ class ArticleController extends Controller {
 
     public function delete($id) {
         $article = Article::find($id);
+        Interchange::where('article_id', '=', $id, 'and', 'status', '=', 'canceled')->delete();
         $article->delete();
         return redirect('/articles/index')
                     ->with('message', 'Artículo eliminado.');

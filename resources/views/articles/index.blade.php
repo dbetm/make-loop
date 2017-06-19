@@ -55,36 +55,43 @@
                                     </p>
                                         @if($article->price)
                                     <p> ${{ $article->price }} @endif </p>
-                                    <div class="row">
-                                        <div class="col-md-3 col-offset-3">
-                                            <a href="{{ url('articles', $article->id) }}" class="btn btn-success btn-sm" title="Editar">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                        </div>
+                                    @if($article->trans != 1)
+                                        <div class="row">
+                                            <div class="col-md-3 col-offset-3">
+                                                <a href="{{ url('articles', $article->id) }}" class="btn btn-success btn-sm" title="Editar">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </div>
 
-                                        <div class="col-md-3">
-                                            <form action="{{ url('articles', $article->id) }}" method="POST" class="form-inline" onsubmit="return confirmDelete();">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Borrar">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </form>
-                                        </div>
+                                            <div class="col-md-3">
+                                                <form action="{{ url('articles', $article->id) }}" method="POST" class="form-inline" onsubmit="return confirmDelete();">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <button type="submit" class="btn btn-danger btn-sm" title="Borrar">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
 
-                                        <div class="col-md-3">
-                                            <form action="{{ url('articles', $article->id) }}" method="POST" class="form-inline">
-                                                {{ csrf_field() }}
-                                                {{ method_field('PUT') }}
-                                                @if($article->is_active == '0')
-                                                    <input type="submit" class="btn btn-primary btn-xs" value="Publicar">
-                                                @else
-                                                    <input type="submit" class="btn btn-warning btn-xs" value="Ocultar">
-                                                @endif
-                                            </form>
+                                            <div class="col-md-3">
+                                                <form action="{{ url('articles', $article->id) }}" method="POST" class="form-inline">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('PUT') }}
+                                                    @if($article->is_active == '0')
+                                                        <input type="submit" class="btn btn-primary btn-xs" value="Publicar">
+                                                    @else
+                                                        <input type="submit" class="btn btn-warning btn-xs" value="Ocultar">
+                                                    @endif
+                                                </form>
+                                            </div>
                                         </div>
-
-                                    </div>
+                                    @else
+                                        <div class="row">
+                                            <div class="col-md-1 col-offset-1">
+                                                <i class="fa fa-refresh"></i>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

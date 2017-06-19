@@ -57,7 +57,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}"><b>Inicio</b></a></li>
                     @if(!Auth::guest())
-                        <li><a href="#">Perfil</a></li>
+                        <li><a href="{{ url('/users/profile/me') }}">Perfil</a></li>
                         <li><a href="{{ url('/articles/index') }}">Mis artículos</a></li>
                         <ul class="nav navbar-nav">
                             <li class="dropdown">

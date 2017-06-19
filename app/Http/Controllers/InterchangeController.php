@@ -111,6 +111,6 @@ class InterchangeController extends Controller {
         $interchange->article->save();
         $interchange->save();
         return back()
-            ->with('message', 'Intercambio cancelado, ahora tiene' . Auth::user()->points . ' puntos.');
+            ->with('message', 'Intercambio cancelado, ahora tiene ' . Auth::user()->points . ' puntos.');
     }
 }

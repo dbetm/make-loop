@@ -3,8 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
-{
+class CreateUsersTable extends Migration {
     /**
      * Run the migrations.
      *
@@ -23,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_active')->default(false); //para controlar si puede publicar o no
             $table->boolean('was_deleted')->default(false); //para simular que se 'borró'
             $table->enum('role', ['admin', 'user'])->default('user');
-            $table->string('image')->nullable();
+            $table->string('image')->default('https://wabashin.myseniorcenter.net/Content/Images/default-profile.png');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -34,8 +33,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::drop('users');
     }
 }

@@ -53,3 +53,11 @@ Route::group(['prefix' => 'interchange'], function() {
     Route::patch('/{id}', 'InterchangeController@send');
     Route::put('/{id}', 'InterchangeController@deliver');
 });
+
+Route::group(['prefix' => 'users/profile'], function() {
+    Route::get('/me', 'ProfileController@index');
+    Route::get('/{id}', 'ProfileController@update');
+    Route::patch('/{id}', 'ProfileController@patchUpdate');
+    Route::get('/pass/{id}', 'ProfileController@editPass');
+    Route::put('/{id}', 'ProfileController@patchEditPass');
+});
