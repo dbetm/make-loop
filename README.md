@@ -1,4 +1,16 @@
-# Laravel PHP Framework
+# Make Loop
+
+Una plataforma donde usuarios suben (publican) artículos/objetos que ya no
+quieran o deseen regalar para que otros usuarios los puedan obtener, y así sea
+un ciclo, de "regalar" y que te "regalen". Dicho ciclo se controla por medio de
+puntos, la idea inicial es que haya dos tipos de usuarios (administradores y
+usuarios ‘normales’) los primeros para administrar y controlar usuarios y
+categorías a las que pertenecen los artículos.
+
+**Proyecto escolar creado en 2017 para la materia de bases de datos**
+
+
+## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
